@@ -1,9 +1,33 @@
 #!/usr/bin/python
-
 import argparse
 
+# Write a function `find_max_profit` that receives as input a list of stock prices. 
+# Your function should return the maximum profit that can be made from a single buy and sell. 
+# You must buy first before selling; no shorting is allowed here.
+
+# For example, `find_max_profit([1050, 270, 1540, 3800, 2])` should return 3530, 
+# which is the maximum profit that can be made from a single buy and then sell of these stock prices. 
+
+# Hint
+# For this problem, we essentially want to find the 
+# maximum difference between the smallest and largest prices in the list of prices, 
+# but we also have to make sure that the max profit is computed by subtracting some price by another price 
+# that comes _before_ it; it can't come after it in the list of prices. 
+
 def find_max_profit(prices):
-  pass
+  # find smallest price
+  # find largest price
+  # find difference between largets and smallest (largets - smallest)
+    prices.sort()
+    smallest_price = prices[0]
+    largest_price = prices[len(prices) - 1]
+    difference = largest_price - smallest_price
+
+    print('smallest price is:', smallest_price)
+    print('largest price is:', largest_price)
+    print('difference:', difference)
+    
+find_max_profit([5, 2, 3, 6])
 
 
 if __name__ == '__main__':
