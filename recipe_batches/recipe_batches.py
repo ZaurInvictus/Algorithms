@@ -3,7 +3,16 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+    portionLowest = None
+    for key in recipe:
+        if key in ingredients:
+            if portionLowest == None or (ingredients[key] // recipe[key]) < portionLowest:
+                portionLowest = ingredients[key] // recipe[key]
+            elif ingredients[key] // recipe[key] == 0:
+                portionLowest = 0
+        else:
+            portionLowest = 0
+    return portionLowest
 
 
 if __name__ == '__main__':
