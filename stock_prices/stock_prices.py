@@ -6,6 +6,7 @@ import argparse
 # You must buy first before selling; no shorting is allowed here.
 
 # For example, `find_max_profit([1050, 270, 1540, 3800, 2])` should return 3530, 
+# example 2 - find_max_profit([10, 7, 5, 8, 11, 9]) should return 6
 # which is the maximum profit that can be made from a single buy and then sell of these stock prices. 
 
 # Hint
@@ -18,17 +19,33 @@ def find_max_profit(prices):
   # find smallest price
   # find largest price
   # find difference between largets and smallest (largets - smallest)
-    prices.sort()
-    smallest_price = prices[0]
-    largest_price = prices[len(prices) - 1]
-    difference = largest_price - smallest_price
+  
+#     prices.sort()
+#     smallest_price = prices[0]
+#     largest_price = prices[len(prices) - 1]
+#     difference = largest_price - smallest_price
 
-    print('smallest price is:', smallest_price)
-    print('largest price is:', largest_price)
-    print('difference:', difference)
-    
-find_max_profit([5, 2, 3, 6])
+#     print('smallest price is:', smallest_price)
+#     print('largest price is:', largest_price)
+#     print('difference:', difference)
+# find_max_profit([1050, 270, 1540, 3800, 2])
 
+    maxprofit = 0
+    current_price = prices[0]
+    current_profit = 0
+    lowest_price = prices[0]
+
+    for i in range(1, len(prices) - 1):
+        current_price = prices[i]
+        if current_price < lowest_price:
+            lowest_price = current_price
+        current_profit = prices[i] - lowest_price
+
+        if current_profit > maxprofit:
+            maxprofit = current_profit
+    return maxprofit
+
+print(find_max_profit([1050, 270, 1540, 3800, 2]))
 
 if __name__ == '__main__':
   # This is just some code to accept inputs from the command line
